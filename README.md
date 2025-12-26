@@ -106,6 +106,11 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
   - Relative numbers in normal mode (for easy motion commands)
   - Absolute numbers in insert mode
 
+- **Indent Guides** ([indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)):
+  - Rainbow indent colors with subtle, discrete hues
+  - Visual scope indicators
+  - Adapts to colorscheme changes
+
 - **Persistent Undo**:
   - Unlimited undo history saved to disk
   - No swap files
@@ -230,8 +235,8 @@ nvim
         ├── lua-line.lua          # Status line
         ├── neo-tree.lua          # File explorer
         ├── opencode.lua          # AI assistant
-        ├── snacks.lua            # Utility functions
         ├── supermaven.lua        # AI completion
+        ├── snacks.lua            # Utility functions
         ├── telescope.lua         # Fuzzy finder
         ├── treesitter.lua        # Syntax highlighting
         └── whichkey.lua          # Keymap helper
