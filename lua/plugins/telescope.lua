@@ -24,6 +24,8 @@ return {
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
+    local make_entry = require("telescope.make_entry")
+    local entry_display = require("telescope.pickers.entry_display")
 
     telescope.setup({
       defaults = {
@@ -47,6 +49,7 @@ return {
           height = 0.80,
           preview_cutoff = 120,
         },
+        dynamic_preview_title = true,
         file_ignore_patterns = {
           "node_modules",
           ".git/",
@@ -137,6 +140,7 @@ return {
           additional_args = function()
             return { "--hidden", "--glob", "!.git/*" }
           end,
+          path_display = { "tail" },
         },
         buffers = {
           show_all_buffers = true,
