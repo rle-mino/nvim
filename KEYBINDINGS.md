@@ -14,6 +14,7 @@ This document provides a comprehensive list of all keybindings in this Neovim co
 - [Code Completion](#code-completion)
 - [Git (LazyGit)](#git-lazygit)
 - [AI Assistant (OpenCode)](#ai-assistant-opencode)
+- [Auto Pairs](#auto-pairs)
 - [Visual Mode](#visual-mode)
 - [Treesitter Selection](#treesitter-selection)
 
@@ -285,6 +286,34 @@ LazyGit uses its own keybindings. Press `?` inside LazyGit to see all commands.
 | `Space + oo` | Switch Back | Return focus to editor |
 | `Ctrl + c` | Interrupt | Stop current OpenCode process |
 | Regular terminal commands work |
+
+---
+
+## Auto Pairs
+
+Automatic bracket, quote, and parenthesis pairing with tree-sitter integration.
+
+### Automatic Pairing
+
+The following characters are automatically paired when typed in Insert mode:
+- `(` creates `()`
+- `[` creates `[]`
+- `{` creates `{}`
+- `"` creates `""`
+- `'` creates `''`
+
+The closing character is automatically added, and your cursor is placed between them.
+
+### Tree-sitter Integration
+
+Auto pairs intelligently handles pairing based on syntax context:
+- Won't auto-pair inside strings (unless opening a nested string)
+- Respects language-specific syntax rules
+- Works seamlessly in Lua, JavaScript, and TypeScript files
+
+### CMP Integration
+
+When accepting a completion with parentheses from nvim-cmp, the closing parenthesis is automatically managed to avoid duplicates.
 
 ---
 

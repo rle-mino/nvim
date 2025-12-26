@@ -106,6 +106,11 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
   - Relative numbers in normal mode (for easy motion commands)
   - Absolute numbers in insert mode
 
+- **Auto Pairs** ([nvim-autopairs](https://github.com/windwp/nvim-autopairs)):
+  - Automatic bracket, quote, and parenthesis pairing
+  - Tree-sitter integration for intelligent pairing
+  - Integrated with nvim-cmp for completion
+
 - **Indent Guides** ([indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)):
   - Rainbow indent colors with subtle, discrete hues
   - Visual scope indicators
@@ -227,6 +232,7 @@ nvim
     │   ├── lazy.lua           # Plugin manager setup
     │   └── options.lua        # Editor options
     └── plugins/
+        ├── autopairs.lua         # Auto bracket/quote pairing
         ├── buffer-line.lua       # Buffer tabs
         ├── colorscheme.lua       # Theme configuration
         ├── indent-blankline.lua  # Indent guides
