@@ -55,6 +55,19 @@ return {
         end
       end,
     })
+
+    -- Refresh git status when focusing neo-tree
+    vim.api.nvim_create_autocmd("BufEnter", {
+      pattern = "*",
+      callback = function()
+        local ft = vim.bo.filetype
+        if ft == "neo-tree" then
+          -- Force refresh of git status by firing git event
+          local events = require("neo-tree.events")
+          events.fire_event(events.GIT_EVENT)
+        end
+      end,
+    })
   end,
   config = function()
     vim.g.loaded_netrw = 1
@@ -182,8 +195,6 @@ return {
           },
         },
       },
-
-
     })
   end,
 }
