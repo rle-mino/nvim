@@ -1,0 +1,21 @@
+git:
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never --syntax-theme=Dracula --line-numbers
+gui:
+  # Show command log
+  showCommandLog: true
+  # Better diff colors
+  theme:
+    activeBorderColor:
+      - "#bd93f9"
+      - bold
+    inactiveBorderColor:
+      - "#6272a4"
+    searchingActiveBorderColor:
+      - "#ff79c6"
+      - bold
+    selectedLineBgColor:
+      - "#44475a"
+    selectedRangeBgColor:
+      - "#44475a"

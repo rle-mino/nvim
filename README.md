@@ -60,6 +60,8 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
   - Floating window interface
   - Stage, commit, push, pull, and more
   - Visual diff and merge conflict resolution
+  - Syntax-highlighted diffs with [delta](https://github.com/dandavison/delta)
+  - Dracula-themed UI for consistency with Neovim
 
 ### AI Assistant
 
@@ -111,10 +113,11 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
 
 - Neovim >= 0.9.0
 - Git
-- [ripgrep](https://github.com/BurntSushi/ripgrep) - For fast file searching
-- [lazygit](https://github.com/jesseduffield/lazygit) - For Git integration (optional)
-- A [Nerd Font](https://www.nerdfonts.com/) - For icon support
-- Node.js - For LSP servers
+- [ripgrep](https://github.com/BurntSushi/ripgrep) - Required for Telescope file searching
+- [lazygit](https://github.com/jesseduffield/lazygit) - Required for Git integration
+- [git-delta](https://github.com/dandavison/delta) - Required for syntax-highlighted diffs in LazyGit
+- A [Nerd Font](https://www.nerdfonts.com/) - Required for icon support
+- Node.js - Required for LSP servers
 
 ## Installation
 
@@ -138,7 +141,19 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
    - Download LSP servers
    - Set up syntax parsers
 
-5. Restart Neovim to complete the setup
+5. Install required dependencies:
+   ```bash
+   # Required for Telescope file searching
+   brew install ripgrep
+
+   # Required for Git integration
+   brew install lazygit
+
+   # Required for syntax-highlighted diffs in LazyGit
+   brew install git-delta
+   ```
+
+6. Restart Neovim to complete the setup
 
 ## Quick Start Guide
 
@@ -189,6 +204,7 @@ nvim
 ~/.config/nvim/
 ├── init.lua                    # Main entry point
 ├── lazy-lock.json             # Plugin version lock file
+├── lazygit_config.yml         # LazyGit configuration with delta integration
 └── lua/
     ├── config/
     │   ├── autocmds.lua       # Auto-commands

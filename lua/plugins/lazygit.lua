@@ -20,9 +20,12 @@ return {
     vim.g.lazygit_floating_window_use_plenary = 0
     vim.g.lazygit_use_neovim_remote = 1
 
+    -- Configure LazyGit to use delta or diff-so-fancy for syntax highlighting
+    vim.g.lazygit_config_file_path = vim.fn.stdpath("config") .. "/lazygit_config.yml"
+
     -- Use dracula theme for lazygit if config exists
     if vim.fn.has("nvim") and vim.fn.executable("lazygit") then
-      vim.g.lazygit_use_custom_config_file_path = 0
+      vim.g.lazygit_use_custom_config_file_path = 1
     end
   end,
 }
