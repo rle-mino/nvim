@@ -214,23 +214,35 @@ This document provides a comprehensive list of all keybindings in this Neovim co
 
 Completion menu appears automatically in Insert mode.
 
+### AI Completion (Supermaven)
+
+Supermaven provides inline AI-powered code suggestions.
+
 | Key | Mode | Action | Description |
 |-----|------|--------|-------------|
-| `Ctrl + Space` | Insert | Trigger | Manually trigger completion |
-| `Enter` | Insert | Confirm | Accept selected completion |
-| `Tab` | Insert | Next | Select next item or jump to next snippet placeholder |
+| `Tab` | Insert | Accept/Navigate | Accept Supermaven suggestion if available, otherwise navigate cmp menu or jump to next snippet placeholder |
+| `Escape` | Insert | Dismiss | Dismiss Supermaven suggestion (stays in insert mode) or exit insert mode if no suggestion |
+
+### Completion Menu (nvim-cmp)
+
+| Key | Mode | Action | Description |
+|-----|------|--------|-------------|
+| `Ctrl + Space` | Insert | Trigger | Manually trigger completion menu |
+| `Enter` | Insert | Confirm | Accept selected completion item from menu |
+| `Tab` | Insert | Next | Select next item in completion menu (if visible and no Supermaven suggestion) |
 | `Shift + Tab` | Insert | Previous | Select previous item or jump to previous snippet placeholder |
 | `Ctrl + e` | Insert | Abort | Close completion menu |
 | `Ctrl + b` | Insert | Scroll Up | Scroll documentation up |
 | `Ctrl + f` | Insert | Scroll Down | Scroll documentation down |
 
 **Completion Sources** (in order of priority):
-1. AI suggestions (Supermaven)
-2. LSP suggestions
-3. Snippets
-4. Lua API (for Neovim config files)
-5. Buffer words
-6. File paths
+1. LSP suggestions
+2. Snippets (LuaSnip)
+3. Lua API (for Neovim config files)
+4. Buffer words
+5. File paths
+
+**Note**: Supermaven provides inline suggestions separately from the completion menu. The Tab key prioritizes Supermaven suggestions over completion menu navigation.
 
 ---
 

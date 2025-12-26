@@ -239,7 +239,7 @@ return {
                 validate = { enable = true },
               },
             }
-            
+
             -- Add schemastore schemas if available
             local ok, schemastore = pcall(require, "schemastore")
             if ok then
@@ -345,16 +345,16 @@ return {
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
-          ["<Tab>"] = cmp.mapping(function(fallback)
+          -- Enter accepts cmp suggestion when cmp menu is visible
+          ["<CR>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
+              cmp.confirm({ select = true })
             else
               fallback()
             end
           end, { "i", "s" }),
+          -- Tab: prioritize Supermaven, then cmp navigation, then luasnip, then fallback
+          -- Actual Tab behavior will be handled by supermaven.lua keybindings
           ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
@@ -366,7 +366,6 @@ return {
           end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
-          { name = "supermaven" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "nvim_lua" },
@@ -378,9 +377,6 @@ return {
             mode = "symbol_text",
             maxwidth = 50,
             ellipsis_char = "...",
-            symbol_map = {
-              Supermaven = "",
-            },
           }),
         },
       })

@@ -26,6 +26,11 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
   - JSON: `jsonls` with schema validation
   - HTML/CSS: `html`, `cssls`
 
+- **AI-Powered Completion** ([supermaven-nvim](https://github.com/supermaven-inc/supermaven-nvim)):
+  - Inline AI code suggestions
+  - Context-aware completions
+  - Smart Tab key integration
+
 - **Autocompletion** ([nvim-cmp](https://github.com/hrsh7th/nvim-cmp)):
   - LSP-powered suggestions
   - Snippet support via LuaSnip
@@ -63,13 +68,18 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
   - Syntax-highlighted diffs with [delta](https://github.com/dandavison/delta)
   - Dracula-themed UI for consistency with Neovim
 
-### AI Assistant
+### AI Assistants
 
 - **OpenCode** ([opencode.nvim](https://github.com/NickvanDyke/opencode.nvim)):
   - AI-powered coding assistant
   - Context-aware code suggestions
   - File and line selection support
   - Integrated terminal interface
+
+- **Supermaven** ([supermaven-nvim](https://github.com/supermaven-inc/supermaven-nvim)):
+  - Real-time AI code completions
+  - Inline suggestion display
+  - Seamless integration with completion menu
 
 ### User Interface
 
@@ -212,17 +222,19 @@ nvim
     │   ├── lazy.lua           # Plugin manager setup
     │   └── options.lua        # Editor options
     └── plugins/
-        ├── buffer-line.lua    # Buffer tabs
-        ├── colorscheme.lua    # Theme configuration
-        ├── lazygit.lua        # Git integration
-        ├── lsp.lua            # Language servers
-        ├── lua-line.lua       # Status line
-        ├── neo-tree.lua       # File explorer
-        ├── opencode.lua       # AI assistant
-        ├── snacks.nvim        # Utility functions
-        ├── telescope.lua      # Fuzzy finder
-        ├── treesitter.lua     # Syntax highlighting
-        └── whichkey.lua       # Keymap helper
+        ├── buffer-line.lua       # Buffer tabs
+        ├── colorscheme.lua       # Theme configuration
+        ├── indent-blankline.lua  # Indent guides
+        ├── lazygit.lua           # Git integration
+        ├── lsp.lua               # Language servers
+        ├── lua-line.lua          # Status line
+        ├── neo-tree.lua          # File explorer
+        ├── opencode.lua          # AI assistant
+        ├── snacks.lua            # Utility functions
+        ├── supermaven.lua        # AI completion
+        ├── telescope.lua         # Fuzzy finder
+        ├── treesitter.lua        # Syntax highlighting
+        └── whichkey.lua          # Keymap helper
 ```
 
 ## Customization
