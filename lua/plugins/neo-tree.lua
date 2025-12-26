@@ -68,12 +68,8 @@ return {
       open_files_do_not_replace_types = { "terminal", "trouble", "qf" },
       sort_case_insensitive = true,
       source_selector = {
-        winbar = true,
+        winbar = false,
         statusline = false,
-        content_layout = "center",
-        sources = {
-          { source = "filesystem", display_name = " 󰉓 Files " },
-        },
       },
       default_component_configs = {
         container = { enable_character_fade = true },
