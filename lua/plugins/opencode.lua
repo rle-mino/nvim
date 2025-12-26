@@ -76,6 +76,13 @@ return {
       vim.keymap.set({ "n", "x" }, "<leader>oa", function()
         require("opencode").select()
       end, { desc = "Execute opencode action" })
+
+      vim.keymap.set("n", "<leader>of", function()
+        local filepath = vim.fn.expand("%:.")
+        if filepath ~= "" then
+          require("opencode").prompt("@" .. filepath)
+        end
+      end, { desc = "Add current file to opencode" })
     end,
   },
 }
