@@ -16,8 +16,8 @@ return {
         -- Find neo-tree window
         for _, win in ipairs(vim.api.nvim_list_wins()) do
           local buf = vim.api.nvim_win_get_buf(win)
-          local ft = vim.api.nvim_buf_get_option(buf, 'filetype')
-          if ft == 'neo-tree' then
+          local ft = vim.api.nvim_get_option_value("filetype", { buf = buf })
+          if ft == "neo-tree" then
             neo_tree_winnr = win
             break
           end

@@ -25,47 +25,48 @@ return {
       -- Required for automatic buffer reloading when opencode edits files
       vim.o.autoread = true
 
+      -- Constants
+      local OPENCODE_FOCUS_DELAY = 100
+
+      -- Helper function to find opencode window
+      local function find_opencode_window()
+        for _, win in ipairs(vim.api.nvim_list_wins()) do
+          local buf = vim.api.nvim_win_get_buf(win)
+          local buf_name = vim.api.nvim_buf_get_name(buf)
+          if buf_name:match("opencode") or vim.api.nvim_get_option_value("buftype", { buf = buf }) == "terminal" then
+            return win
+          end
+        end
+        return nil
+      end
+
+      -- Helper function to focus window and enter insert mode
+      local function focus_and_insert(win)
+        vim.api.nvim_set_current_win(win)
+        vim.cmd("startinsert")
+      end
+
       -- Keymaps
       vim.keymap.set({ "n", "t" }, "<leader>oo", function()
-        local current_win = vim.api.nvim_get_current_win()
-        local current_buf = vim.api.nvim_win_get_buf(current_win)
+        local current_buf = vim.api.nvim_get_current_buf()
         local is_in_opencode = vim.api.nvim_get_option_value("buftype", { buf = current_buf }) == "terminal"
 
         if is_in_opencode then
-          -- If we're in opencode, just switch to the previous window (main buffer)
           vim.cmd("wincmd p")
-        else
-          -- Check if opencode window already exists
-          local opencode_win = nil
-          for _, win in ipairs(vim.api.nvim_list_wins()) do
-            local buf = vim.api.nvim_win_get_buf(win)
-            local buf_name = vim.api.nvim_buf_get_name(buf)
-            if buf_name:match("opencode") or vim.api.nvim_get_option_value("buftype", { buf = buf }) == "terminal" then
-              opencode_win = win
-              break
-            end
-          end
+          return
+        end
 
-          if opencode_win then
-            -- If opencode window exists, just focus it
-            vim.api.nvim_set_current_win(opencode_win)
-            vim.cmd("startinsert")
-          else
-            -- If opencode window doesn't exist, toggle it and focus
-            require("opencode").toggle()
-            -- Give opencode a moment to open, then focus the terminal
-            vim.defer_fn(function()
-              for _, win in ipairs(vim.api.nvim_list_wins()) do
-                local buf = vim.api.nvim_win_get_buf(win)
-                local buf_name = vim.api.nvim_buf_get_name(buf)
-                if buf_name:match("opencode") or vim.api.nvim_get_option_value("buftype", { buf = buf }) == "terminal" then
-                  vim.api.nvim_set_current_win(win)
-                  vim.cmd("startinsert")
-                  break
-                end
-              end
-            end, 100)
-          end
+        local opencode_win = find_opencode_window()
+        if opencode_win then
+          focus_and_insert(opencode_win)
+        else
+          require("opencode").toggle()
+          vim.defer_fn(function()
+            local win = find_opencode_window()
+            if win then
+              focus_and_insert(win)
+            end
+          end, OPENCODE_FOCUS_DELAY)
         end
       end, { desc = "Open/Focus opencode" })
 

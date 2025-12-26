@@ -101,7 +101,7 @@ local on_attach = function(client, bufnr)
             local uri = selection.value.uri
             local loc = selection.value.locations[1]
             vim.cmd("edit " .. vim.uri_to_fname(uri))
-            vim.api.nvim_win_set_cursor(0, { loc.line + 1, loc.character})
+            vim.api.nvim_win_set_cursor(0, { loc.line + 1, loc.character })
           end
         end)
         return true
@@ -234,16 +234,23 @@ return {
 
           -- JSON
           ["jsonls"] = function()
+            local settings = {
+              json = {
+                validate = { enable = true },
+              },
+            }
+            
+            -- Add schemastore schemas if available
+            local ok, schemastore = pcall(require, "schemastore")
+            if ok then
+              settings.json.schemas = schemastore.schemas()
+            end
+
             lspconfig.jsonls.setup({
               capabilities = capabilities,
               on_attach = on_attach,
               filetypes = { "json", "jsonc" },
-              settings = {
-                json = {
-                  schemas = require("schemastore").schemas(),
-                  validate = { enable = true },
-                },
-              },
+              settings = settings,
             })
           end,
         },

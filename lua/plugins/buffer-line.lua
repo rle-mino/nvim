@@ -5,10 +5,10 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "VeryLazy",
     config = function()
-      local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
       local project_name = "Project"
-      if vim.v.shell_error == 0 and git_root then
-        project_name = vim.fn.fnamemodify(git_root, ":t")
+      local ok, git_root = pcall(vim.fn.systemlist, "git rev-parse --show-toplevel")
+      if ok and git_root and #git_root > 0 and vim.v.shell_error == 0 then
+        project_name = vim.fn.fnamemodify(git_root[1], ":t")
       end
 
       require("bufferline").setup({

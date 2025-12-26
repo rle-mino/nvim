@@ -1,5 +1,4 @@
 local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
 -- Buffer navigation
 keymap("n", "<S-l>", ":bnext<CR>", { noremap = true, silent = true, desc = "Next buffer" })
