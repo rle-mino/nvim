@@ -7,11 +7,15 @@ return {
       build = "make",
     },
     "nvim-tree/nvim-web-devicons",
+    {
+      "nvim-telescope/telescope-live-grep-args.nvim",
+      version = "^1.0.0",
+    },
   },
   cmd = "Telescope",
   keys = {
     { "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", desc = "Find files" },
-    { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
+    { "<leader>fg", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", desc = "Live grep with args" },
     { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
     { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent files" },
@@ -26,6 +30,7 @@ return {
     local actions = require("telescope.actions")
     local make_entry = require("telescope.make_entry")
     local entry_display = require("telescope.pickers.entry_display")
+    local lga_actions = require("telescope-live-grep-args.actions")
 
     telescope.setup({
       defaults = {
@@ -174,11 +179,21 @@ return {
           override_file_sorter = true,
           case_mode = "smart_case",
         },
+        live_grep_args = {
+          auto_quoting = true,
+          mappings = {
+            i = {
+              ["<C-k>"] = lga_actions.quote_prompt(),
+              ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob **/{}/** " }),
+            },
+          },
+        },
       },
     })
 
     -- Load extensions
     telescope.load_extension("fzf")
+    telescope.load_extension("live_grep_args")
   end,
 }
 
