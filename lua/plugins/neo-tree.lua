@@ -36,7 +36,6 @@ return {
       end,
       desc = "Toggle focus to file explorer"
     },
-    { "<leader>E", "<cmd>Neotree reveal<cr>", desc = "Reveal current file" },
   },
   init = function()
     vim.api.nvim_create_autocmd("VimEnter", {
