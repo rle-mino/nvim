@@ -266,13 +266,15 @@ Smart commenting with tree-sitter integration for context-aware comments.
 
 ---
 
-## Git (LazyGit)
+## Git (LazyGit & GitSigns)
+
+### LazyGit
 
 | Key | Mode | Action | Description |
 |-----|------|--------|-------------|
 | `Space + gg` | Normal | Open LazyGit | Open LazyGit in floating window |
 
-### Inside LazyGit
+#### Inside LazyGit
 
 LazyGit uses its own keybindings. Press `?` inside LazyGit to see all commands.
 
@@ -286,6 +288,57 @@ LazyGit uses its own keybindings. Press `?` inside LazyGit to see all commands.
 - `l`: View logs
 - `b`: View branches
 - `q`: Quit LazyGit
+
+### GitSigns (In-Editor Git)
+
+#### Navigation
+
+| Key | Mode | Action | Description |
+|-----|------|--------|-------------|
+| `]c` | Normal | Next Hunk | Jump to next git change |
+| `[c` | Normal | Previous Hunk | Jump to previous git change |
+
+#### Staging & Reset
+
+| Key | Mode | Action | Description |
+|-----|------|--------|-------------|
+| `Space + gs` | Normal | Stage Hunk | Stage current hunk |
+| `Space + gs` | Visual | Stage Hunk | Stage selected hunk |
+| `Space + gr` | Normal | Reset Hunk | Reset current hunk |
+| `Space + gr` | Visual | Reset Hunk | Reset selected hunk |
+| `Space + gS` | Normal | Stage Buffer | Stage entire file |
+| `Space + gu` | Normal | Undo Stage | Undo last stage operation |
+| `Space + gR` | Normal | Reset Buffer | Reset entire file to HEAD |
+
+#### Blame & History
+
+| Key | Mode | Action | Description |
+|-----|------|--------|-------------|
+| `Space + gb` | Normal | Blame Line | Show full blame for current line |
+| `Space + gB` | Normal | Open Commit | Open commit in browser (GitHub/GitLab/etc.) |
+| `Space + gtb` | Normal | Toggle Blame | Toggle inline blame display |
+
+**Note:** Inline blame is enabled by default and shows author, date, and commit summary at the end of each line.
+
+#### Diff & Preview
+
+| Key | Mode | Action | Description |
+|-----|------|--------|-------------|
+| `Space + gp` | Normal | Preview Hunk | Preview changes in floating window |
+| `Space + gd` | Normal | Diff This | Show diff for current file |
+| `Space + gD` | Normal | Diff This ~ | Show diff against previous commit |
+| `Space + gtd` | Normal | Toggle Deleted | Toggle display of deleted lines |
+
+#### Text Objects
+
+| Key | Mode | Action | Description |
+|-----|------|--------|-------------|
+| `ih` | Operator/Visual | Select Hunk | Select current git hunk as text object |
+
+**Examples:**
+- `vih` - Visual select current hunk
+- `dih` - Delete current hunk
+- `yih` - Yank current hunk
 
 ---
 

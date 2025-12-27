@@ -68,6 +68,14 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
   - Syntax-highlighted diffs with [delta](https://github.com/dandavison/delta)
   - Dracula-themed UI for consistency with Neovim
 
+- **GitSigns** ([gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)):
+  - Inline git blame (enabled by default)
+  - Visual git change indicators in the gutter
+  - Stage and reset hunks directly from the editor
+  - Navigate between git changes
+  - Preview diffs in floating windows
+  - Open commits in browser (GitHub/GitLab/etc.)
+
 ### AI Assistants
 
 - **OpenCode** ([opencode.nvim](https://github.com/NickvanDyke/opencode.nvim)):
@@ -225,10 +233,11 @@ nvim
 4. Press `K` to see documentation
 
 **Git workflow:**
-1. Press `Space + g + g` to open LazyGit
-2. Stage changes, write commit message
-3. Push to remote
-4. Press `q` to close LazyGit
+1. View inline blame with `Space + g + t + b` (toggle)
+2. Navigate changes with `]c` (next) and `[c` (previous)
+3. Stage hunks with `Space + g + s` or open LazyGit with `Space + g + g`
+4. View commit in browser with `Space + g + B`
+5. Use LazyGit for complex operations (merge, rebase, etc.)
 
 ## File Structure
 
@@ -247,11 +256,12 @@ nvim
         ├── autopairs.lua         # Auto bracket/quote pairing
         ├── buffer-line.lua       # Buffer tabs
         ├── colorscheme.lua       # Theme configuration
-        ├── comment.lua           # Smart commenting
-        ├── surround.lua          # Surround text objects
-        ├── indent-blankline.lua  # Indent guides
-        ├── lazygit.lua           # Git integration
-        ├── lsp.lua               # Language servers
+         ├── comment.lua           # Smart commenting
+         ├── surround.lua          # Surround text objects
+         ├── indent-blankline.lua  # Indent guides
+         ├── git-signs.lua         # Git change indicators & blame
+         ├── lazygit.lua           # Git UI integration
+         ├── lsp.lua               # Language servers
         ├── lua-line.lua          # Status line
         ├── neo-tree.lua          # File explorer
         ├── opencode.lua          # AI assistant
