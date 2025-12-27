@@ -153,6 +153,13 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
   - Unlimited undo history saved to disk
   - No swap files
 
+- **Smooth Scrolling** ([neoscroll.nvim](https://github.com/karb94/neoscroll.nvim)):
+  - Smooth animated scrolling for all scroll commands
+  - Supports half-page (`Ctrl + u/d`), full-page (`Ctrl + b/f`), and line scrolling (`Ctrl + y/e`)
+  - Smooth centering commands (`zt`, `zz`, `zb`)
+  - Sine easing function for natural-feeling animations
+  - Cursor hidden during scroll for cleaner visual experience
+
 - **Clipboard Integration**:
   - System clipboard sync
   - Easy copy/paste between Neovim and other apps

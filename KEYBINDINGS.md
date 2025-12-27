@@ -7,6 +7,7 @@ This document provides a comprehensive list of all keybindings in this Neovim co
 ## Table of Contents
 
 - [General Editor](#general-editor)
+- [Navigation & Scrolling](#navigation--scrolling)
 - [Buffer Management](#buffer-management)
 - [File Explorer (Neo-tree)](#file-explorer-neo-tree)
 - [Fuzzy Finding (Telescope)](#fuzzy-finding-telescope)
@@ -30,6 +31,29 @@ This document provides a comprehensive list of all keybindings in this Neovim co
 | `Space + q` | Normal | `:q<CR>` | Quit current window |
 | `Space + nh` | Normal | `:nohlsearch<CR>` | Clear search highlights |
 | `Space` | Normal | Wait 300ms | Show which-key menu with all available commands |
+
+---
+
+## Navigation & Scrolling
+
+Smooth scrolling with animated transitions for a more polished editing experience.
+
+| Key | Mode | Action | Description |
+|-----|------|--------|-------------|
+| `Ctrl + u` | Normal | Scroll Up | Scroll half-page up with smooth animation |
+| `Ctrl + d` | Normal | Scroll Down | Scroll half-page down with smooth animation |
+| `Ctrl + b` | Normal | Scroll Back | Scroll full-page up with smooth animation |
+| `Ctrl + f` | Normal | Scroll Forward | Scroll full-page down with smooth animation |
+| `Ctrl + y` | Normal | Line Up | Scroll one line up with smooth animation |
+| `Ctrl + e` | Normal | Line Down | Scroll one line down with smooth animation |
+| `zt` | Normal | Top | Move current line to top of screen (animated) |
+| `zz` | Normal | Center | Center current line on screen (animated) |
+| `zb` | Normal | Bottom | Move current line to bottom of screen (animated) |
+
+**Features:**
+- All scrolling commands use smooth sine-easing animations
+- Cursor is hidden during scroll for cleaner visual experience
+- Scrolling stops at end of file (no empty lines beyond buffer)
 
 ---
 
