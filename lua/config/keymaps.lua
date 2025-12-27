@@ -17,3 +17,7 @@ keymap("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 
 -- Quit
 keymap("n", "<leader>q", ":q<CR>", { desc = "Quit" })
+
+-- Window size
+keymap("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+keymap("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
