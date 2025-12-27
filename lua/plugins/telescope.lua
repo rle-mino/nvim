@@ -24,6 +24,7 @@ return {
     { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document symbols" },
     { "<leader>fS", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Workspace symbols" },
     { "<leader>fe", "<cmd>Telescope find_files hidden=true no_ignore=true search_file=.env<cr>", desc = "Find .env files" },
+    { "<leader>gh", "<cmd>Telescope git_bcommits<cr>", desc = "Git current file history" },
   },
   config = function()
     local telescope = require("telescope")
