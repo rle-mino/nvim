@@ -27,6 +27,10 @@ opt.signcolumn = "yes"
 opt.cursorline = true
 opt.scrolloff = 8
 opt.sidescrolloff = 8
+opt.showmode = false
+opt.cmdheight = 1
+opt.laststatus = 3
+opt.fillchars:append({ eob = " " })
 
 -- Behavior
 opt.hidden = true
