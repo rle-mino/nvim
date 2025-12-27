@@ -136,6 +136,12 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
   - Visual scope indicators
   - Adapts to colorscheme changes
 
+- **Color Highlighting** ([nvim-highlight-colors](https://github.com/brenoprata10/nvim-highlight-colors)):
+  - Real-time color preview in the editor
+  - Highlights hex, RGB, HSL color codes with their actual colors
+  - Supports Tailwind CSS colors
+  - Displays colors as background highlights for easy visualization
+
 - **Persistent Undo**:
   - Unlimited undo history saved to disk
   - No swap files
@@ -253,23 +259,24 @@ nvim
     │   ├── lazy.lua           # Plugin manager setup
     │   └── options.lua        # Editor options
     └── plugins/
-        ├── autopairs.lua         # Auto bracket/quote pairing
-        ├── buffer-line.lua       # Buffer tabs
-        ├── colorscheme.lua       # Theme configuration
-         ├── comment.lua           # Smart commenting
-         ├── surround.lua          # Surround text objects
-         ├── indent-blankline.lua  # Indent guides
-         ├── git-signs.lua         # Git change indicators & blame
-         ├── lazygit.lua           # Git UI integration
-         ├── lsp.lua               # Language servers
-        ├── lua-line.lua          # Status line
-        ├── neo-tree.lua          # File explorer
-        ├── opencode.lua          # AI assistant
-        ├── supermaven.lua        # AI completion
-        ├── snacks.lua            # Utility functions
-        ├── telescope.lua         # Fuzzy finder
-        ├── treesitter.lua        # Syntax highlighting
-        └── whichkey.lua          # Keymap helper
+        ├── autopairs.lua            # Auto bracket/quote pairing
+        ├── buffer-line.lua          # Buffer tabs
+        ├── colorscheme.lua          # Theme configuration
+        ├── comment.lua              # Smart commenting
+        ├── surround.lua             # Surround text objects
+        ├── indent-blankline.lua     # Indent guides
+        ├── highlight-colors.lua     # Color preview highlighting
+        ├── git-signs.lua            # Git change indicators & blame
+        ├── lazygit.lua              # Git UI integration
+        ├── lsp.lua                  # Language servers
+        ├── lua-line.lua             # Status line
+        ├── neo-tree.lua             # File explorer
+        ├── opencode.lua             # AI assistant
+        ├── supermaven.lua           # AI completion
+        ├── snacks.lua               # Utility functions
+        ├── telescope.lua            # Fuzzy finder
+        ├── treesitter.lua           # Syntax highlighting
+        └── whichkey.lua             # Keymap helper
 ```
 
 ## Customization

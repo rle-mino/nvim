@@ -373,11 +373,25 @@ return {
           { name = "path" },
         }),
         formatting = {
-          format = lspkind.cmp_format({
-            mode = "symbol_text",
-            maxwidth = 50,
-            ellipsis_char = "...",
-          }),
+          format = function(entry, item)
+            -- First, get color item from nvim-highlight-colors
+            local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
+            
+            -- Then apply lspkind formatting
+            item = lspkind.cmp_format({
+              mode = "symbol_text",
+              maxwidth = 50,
+              ellipsis_char = "...",
+            })(entry, item)
+            
+            -- Finally, apply color highlighting if available
+            if color_item.abbr_hl_group then
+              item.kind_hl_group = color_item.abbr_hl_group
+              item.kind = color_item.abbr
+            end
+            
+            return item
+          end,
         },
       })
     end,
