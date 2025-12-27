@@ -1,6 +1,8 @@
-# Neovim Configuration
+# RLE.NVIM
 
 A modern, feature-rich Neovim configuration focused on web development with TypeScript/JavaScript, built from scratch with Lua and lazy.nvim.
+
+![Dashboard](doc/assets/dashboard.png)
 
 ## Philosophy
 
@@ -45,15 +47,22 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
 
 ### File Navigation & Search
 
+- **Dashboard** ([snacks.nvim](https://github.com/folke/snacks.nvim)):
+  - Custom RLE.NVIM branded homepage with ASCII art
+  - Quick access to common actions (Find File, Find Text, Recent Files, Config)
+  - Automatically opens with Neo-tree on startup
+  - Keyboard-driven navigation for fast workflow
+
 - **File Explorer** ([neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)):
-  - Opens automatically on startup
+  - Opens automatically on startup alongside dashboard
   - Git status integration
   - File operations (create, delete, rename, copy, move)
   - Smart toggling and focus management
 
 - **Fuzzy Finder** ([telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)):
   - Fast file finding with `ripgrep`
-  - Live grep with advanced search patterns
+  - Advanced live grep with arguments support (`live_grep_args`)
+  - Quote prompting and glob patterns for advanced searches
   - Buffer, symbol, and diagnostic searching
   - Recent files and help tags
   - Hidden files included by default
@@ -108,12 +117,12 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
   - Shows available keybindings as you type
   - Grouped commands by category
 
-- **Notifications** ([nvim-notify](https://github.com/rcarriga/nvim-notify)):
-  - Beautiful notification popups
-  - Animated fade-in/slide-out transitions
-  - Icon-based message levels (info, warn, error, debug)
-  - Non-intrusive top-down notifications
-  - Dracula theme integration
+- **Snacks** ([snacks.nvim](https://github.com/folke/snacks.nvim)):
+  - Custom branded dashboard with RLE.NVIM ASCII art
+  - Beautiful notification system with fancy styling
+  - Input prompts for OpenCode integration
+  - Picker/selector utilities
+  - Terminal integration
 
 ### Editor Features
 
@@ -220,21 +229,31 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
 ### Opening Neovim
 
 ```bash
-# Open current directory
+# Open current directory (shows dashboard + neo-tree)
 nvim .
 
 # Open a specific file
 nvim file.ts
 
-# Open from last session
+# Open from last session (shows dashboard + neo-tree)
 nvim
 ```
 
 ### First Steps
 
+When you open Neovim, you'll see the **RLE.NVIM dashboard** with Neo-tree on the left. From the dashboard, you can:
+
+1. Press `f` to find files
+2. Press `g` to search text with advanced grep
+3. Press `r` to view recent files
+4. Press `c` to browse your Neovim config
+5. Press `L` to open Lazy plugin manager
+6. Press `q` to quit
+
+Or use traditional keybindings:
 1. **Explore the file tree**: Press `Space + e` to toggle focus to neo-tree
 2. **Find files**: Press `Space + f + f` to search for files
-3. **Search in files**: Press `Space + f + g` to live grep
+3. **Search in files**: Press `Space + f + g` to live grep with args
 4. **Open Git UI**: Press `Space + g + g` to launch LazyGit
 5. **Get help**: Press `Space` and wait - which-key will show available commands
 
@@ -329,7 +348,7 @@ keymap("n", "<your-key>", "<your-command>", { desc = "Description" })
 
 ## Keybindings Reference
 
-See [KEYBINDINGS.md](./KEYBINDINGS.md) for a comprehensive list of all keybindings organized by category.
+See [KEYBINDINGS.md](./doc/KEYBINDINGS.md) for a comprehensive list of all keybindings organized by category.
 
 ## Troubleshooting
 
