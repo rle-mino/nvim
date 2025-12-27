@@ -25,12 +25,17 @@ return {
       win = {
         border = "rounded",
         padding = { 2, 2, 2, 2 },
+        -- Position at bottom left
+        col = 0,
+        row = math.huge,
+        -- Narrower width for vertical list
+        width = { min = 20, max = 30 },
+        height = { min = 4, max = 75 },
       },
       layout = {
-        height = { min = 4, max = 25 },
-        width = { min = 20, max = 50 },
+        width = { min = 20, max = 30 },
         spacing = 3,
-        align = "center",
+        align = "left",
       },
     })
 
