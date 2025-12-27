@@ -70,8 +70,33 @@ return {
         end
       end, { desc = "Open/Focus opencode" })
 
-      vim.keymap.set({ "n", "x" }, "<leader>ol", function()
-        require("opencode").prompt("@this")
+      vim.keymap.set("n", "<leader>ol", function()
+        local filepath = vim.fn.expand("%:.")
+        local line = vim.fn.line(".")
+        if filepath ~= "" then
+          require("opencode").prompt("@" .. filepath .. "#L" .. line .. " ")
+        end
+      end, { desc = "Add current line to opencode" })
+      
+      vim.keymap.set("x", "<leader>ol", function()
+        -- Get visual selection range
+        local start_pos = vim.fn.getpos("'<")
+        local end_pos = vim.fn.getpos("'>")
+        local start_line = start_pos[2]
+        local end_line = end_pos[2]
+        
+        -- Exit visual mode
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'x', false)
+        
+        -- Format as @filepath#Lstart-end
+        local filepath = vim.fn.expand("%:.")
+        if filepath ~= "" then
+          if start_line == end_line then
+            require("opencode").prompt("@" .. filepath .. "#L" .. start_line .. " ")
+          else
+            require("opencode").prompt("@" .. filepath .. "#L" .. start_line .. "-" .. end_line .. " ")
+          end
+        end
       end, { desc = "Add selected lines to opencode" })
 
       vim.keymap.set({ "n", "x" }, "<leader>oa", function()
