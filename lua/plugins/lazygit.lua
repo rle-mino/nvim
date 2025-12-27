@@ -27,5 +27,18 @@ return {
     if vim.fn.has("nvim") and vim.fn.executable("lazygit") then
       vim.g.lazygit_use_custom_config_file_path = 1
     end
+
+    -- Make space work instantly in lazygit by mapping it to pass through directly
+    -- This avoids the leader key timeout delay in the terminal
+    local lazygit_group = vim.api.nvim_create_augroup("LazyGitConfig", { clear = true })
+
+    vim.api.nvim_create_autocmd("TermOpen", {
+      group = lazygit_group,
+      pattern = "*lazygit",
+      callback = function()
+        -- In terminal mode, map space to send space directly (bypassing leader timeout)
+        vim.keymap.set('t', '<Space>', '<Space>', { buffer = true, nowait = true })
+      end,
+    })
   end,
 }
