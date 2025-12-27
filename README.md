@@ -108,6 +108,13 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
   - Shows available keybindings as you type
   - Grouped commands by category
 
+- **Notifications** ([nvim-notify](https://github.com/rcarriga/nvim-notify)):
+  - Beautiful notification popups
+  - Animated fade-in/slide-out transitions
+  - Icon-based message levels (info, warn, error, debug)
+  - Non-intrusive top-down notifications
+  - Dracula theme integration
+
 ### Editor Features
 
 - **Smart Line Numbers**:
@@ -271,6 +278,8 @@ nvim
         ├── lsp.lua                  # Language servers
         ├── lua-line.lua             # Status line
         ├── neo-tree.lua             # File explorer
+        ├── neoscroll.lua            # Smooth scrolling
+        ├── notify.lua               # Notification popups
         ├── opencode.lua             # AI assistant
         ├── supermaven.lua           # AI completion
         ├── snacks.lua               # Utility functions
