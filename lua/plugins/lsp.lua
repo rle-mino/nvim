@@ -128,11 +128,8 @@ return {
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
-      { "folke/neodev.nvim", opts = {} },
     },
     config = function()
-      -- Setup neodev for Lua LSP
-      require("neodev").setup()
 
       local lspconfig = require("lspconfig")
       local mason_lspconfig = require("mason-lspconfig")
@@ -366,6 +363,7 @@ return {
           end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
+          { name = "lazydev", group_index = 0 }, -- set group index to 0 to skip loading LuaLS completions
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "nvim_lua" },
@@ -395,5 +393,17 @@ return {
         },
       })
     end,
+  },
+
+  -- Lazydev - Faster LuaLS setup for Neovim
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
   },
 }
