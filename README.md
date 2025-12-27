@@ -117,6 +117,12 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
   - Tree-sitter integration for intelligent pairing
   - Integrated with nvim-cmp for completion
 
+- **Surround** ([nvim-surround](https://github.com/kylechui/nvim-surround)):
+  - Add, change, and delete surrounding characters (brackets, quotes, tags, etc.)
+  - Works with vim motions and text objects
+  - Smart handling of function calls, HTML tags, and more
+  - Dot-repeat support for all operations
+
 - **Indent Guides** ([indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)):
   - Rainbow indent colors with subtle, discrete hues
   - Visual scope indicators
@@ -242,6 +248,7 @@ nvim
         ├── buffer-line.lua       # Buffer tabs
         ├── colorscheme.lua       # Theme configuration
         ├── comment.lua           # Smart commenting
+        ├── surround.lua          # Surround text objects
         ├── indent-blankline.lua  # Indent guides
         ├── lazygit.lua           # Git integration
         ├── lsp.lua               # Language servers

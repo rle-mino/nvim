@@ -16,6 +16,7 @@ This document provides a comprehensive list of all keybindings in this Neovim co
 - [Git (LazyGit)](#git-lazygit)
 - [AI Assistant (OpenCode)](#ai-assistant-opencode)
 - [Auto Pairs](#auto-pairs)
+- [Surround](#surround)
 - [Visual Mode](#visual-mode)
 - [Treesitter Selection](#treesitter-selection)
 
@@ -332,6 +333,91 @@ Auto pairs intelligently handles pairing based on syntax context:
 ### CMP Integration
 
 When accepting a completion with parentheses from nvim-cmp, the closing parenthesis is automatically managed to avoid duplicates.
+
+---
+
+## Surround
+
+Add, change, and delete surrounding characters (brackets, quotes, tags, function calls, etc.).
+
+### Add Surround
+
+| Key | Mode | Action | Description |
+|-----|------|--------|-------------|
+| `ys{motion}{char}` | Normal | Add Surround | Surround text with character after motion |
+| `yss{char}` | Normal | Add Line Surround | Surround entire line with character |
+| `yS{motion}{char}` | Normal | Add Block Surround | Surround and place on new lines |
+| `ySS{char}` | Normal | Add Line Block | Surround entire line and place on new lines |
+| `S{char}` | Visual | Add Surround | Surround visual selection with character |
+
+**Examples:**
+- `ysiw"` - Surround word with double quotes: `word` → `"word"`
+- `ysiw)` - Surround word with parentheses: `word` → `(word)`
+- `ysiw]` - Surround word with brackets (no space): `word` → `[word]`
+- `ysiw[` - Surround word with brackets (with space): `word` → `[ word ]`
+- `ysiwt<div>` - Surround word with HTML tag: `word` → `<div>word</div>`
+- `yss"` - Surround entire line with quotes
+- `ySiw{` - Surround word with braces on new lines:
+  ```
+  word
+  ```
+  becomes:
+  ```
+  {
+    word
+  }
+  ```
+
+### Change Surround
+
+| Key | Action | Description |
+|-----|--------|-------------|
+| `cs{old}{new}` | Change Surround | Replace surrounding character |
+| `cst{new}` | Change Tag | Change surrounding HTML/XML tag |
+
+**Examples:**
+- `cs"'` - Change double quotes to single: `"hello"` → `'hello'`
+- `cs)]` - Change parentheses to brackets: `(hello)` → `[hello]`
+- `cs({` - Change parentheses to braces with space: `(hello)` → `{ hello }`
+- `cst<p>` - Change surrounding tag to `<p>`: `<div>hello</div>` → `<p>hello</p>`
+
+### Delete Surround
+
+| Key | Action | Description |
+|-----|--------|-------------|
+| `ds{char}` | Delete Surround | Remove surrounding character |
+| `dst` | Delete Tag | Remove surrounding HTML/XML tag |
+
+**Examples:**
+- `ds"` - Remove double quotes: `"hello"` → `hello`
+- `ds)` - Remove parentheses: `(hello)` → `hello`
+- `ds{` - Remove braces: `{ hello }` → `hello`
+- `dst` - Remove HTML tag: `<div>hello</div>` → `hello`
+
+### Supported Characters
+
+| Character | Creates |
+|-----------|---------|
+| `(` or `)` | Parentheses with/without space: `( text )` or `(text)` |
+| `{` or `}` | Braces with/without space: `{ text }` or `{text}` |
+| `[` or `]` | Brackets with/without space: `[ text ]` or `[text]` |
+| `<` or `>` | Angle brackets: `<text>` |
+| `'` | Single quotes: `'text'` |
+| `"` | Double quotes: `"text"` |
+| `` ` `` | Backticks: `` `text` `` |
+| `t` | HTML/XML tag (prompts for tag name) |
+
+### Text Objects
+
+You can use vim motions with surround operations:
+
+- `ysiw"` - Surround inner word
+- `ysa"(` - Surround around quotes with parens: `"hello"` → `("hello")`
+- `ysap{` - Surround around paragraph with braces
+- `ysi)(` - Surround inside parentheses with another set
+- `cs"'` - Change surrounding quotes
+
+**Tip:** All surround operations support dot-repeat (`.` key), making it easy to repeat the operation on multiple locations.
 
 ---
 
