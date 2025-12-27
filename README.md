@@ -106,6 +106,12 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
   - Relative numbers in normal mode (for easy motion commands)
   - Absolute numbers in insert mode
 
+- **Smart Commenting** ([Comment.nvim](https://github.com/numToStr/Comment.nvim)):
+  - Toggle comments with `Space + /`
+  - Context-aware commenting with tree-sitter integration
+  - Automatic syntax detection for different file types
+  - Cursor moves to next line after commenting (normal mode)
+
 - **Auto Pairs** ([nvim-autopairs](https://github.com/windwp/nvim-autopairs)):
   - Automatic bracket, quote, and parenthesis pairing
   - Tree-sitter integration for intelligent pairing
@@ -235,6 +241,7 @@ nvim
         ├── autopairs.lua         # Auto bracket/quote pairing
         ├── buffer-line.lua       # Buffer tabs
         ├── colorscheme.lua       # Theme configuration
+        ├── comment.lua           # Smart commenting
         ├── indent-blankline.lua  # Indent guides
         ├── lazygit.lua           # Git integration
         ├── lsp.lua               # Language servers

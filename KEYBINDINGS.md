@@ -12,6 +12,7 @@ This document provides a comprehensive list of all keybindings in this Neovim co
 - [Fuzzy Finding (Telescope)](#fuzzy-finding-telescope)
 - [LSP & Code Navigation](#lsp--code-navigation)
 - [Code Completion](#code-completion)
+- [Code Commenting](#code-commenting)
 - [Git (LazyGit)](#git-lazygit)
 - [AI Assistant (OpenCode)](#ai-assistant-opencode)
 - [Auto Pairs](#auto-pairs)
@@ -247,6 +248,23 @@ Supermaven provides inline AI-powered code suggestions.
 
 ---
 
+## Code Commenting
+
+Smart commenting with tree-sitter integration for context-aware comments.
+
+| Key | Mode | Action | Description |
+|-----|------|--------|-------------|
+| `Space + /` | Normal | Toggle Comment | Comment/uncomment current line and move to next line |
+| `Space + /` | Visual | Toggle Comment | Comment/uncomment selected lines |
+
+**Features:**
+- Automatically uses correct comment syntax based on file type
+- Tree-sitter integration for context-aware commenting (respects JSX/TSX syntax)
+- In normal mode, cursor moves to next line after commenting for easy multi-line commenting
+- Preserves indentation when commenting/uncommenting
+
+---
+
 ## Git (LazyGit)
 
 | Key | Mode | Action | Description |
@@ -323,6 +341,7 @@ When accepting a completion with parentheses from nvim-cmp, the closing parenthe
 |-----|--------|-------------|
 | `J` | Move Down | Move selected line(s) down |
 | `K` | Move Up | Move selected line(s) up |
+| `Space + /` | Toggle Comment | Comment/uncomment selected lines |
 | `Space + ol` | OpenCode | Add selection to OpenCode |
 | `Space + oa` | OpenCode Action | Execute OpenCode action on selection |
 
