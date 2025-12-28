@@ -179,7 +179,7 @@ return {
             ["<bs>"] = "navigate_up",
             ["."] = "set_root",
             ["H"] = "toggle_hidden",
-            -- disables file search (since we use telescope)
+            -- disables file search (since we use fzf-lua)
             ["/"] = "noop",
             ["f"] = "noop",
             ["D"] = "fuzzy_finder_directory",

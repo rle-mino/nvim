@@ -10,7 +10,7 @@ return {
           javascript = { "string", "template_string" },
           typescript = { "string", "template_string" },
         },
-        disable_filetype = { "TelescopePrompt", "spectre_panel", "snacks_picker_input" },
+        disable_filetype = { "fzf", "spectre_panel", "snacks_picker_input" },
       })
 
       -- Integration with nvim-cmp

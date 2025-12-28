@@ -10,7 +10,7 @@ This document provides a comprehensive list of all keybindings in this Neovim co
 - [Navigation & Scrolling](#navigation--scrolling)
 - [Buffer Management](#buffer-management)
 - [File Explorer (Neo-tree)](#file-explorer-neo-tree)
-- [Fuzzy Finding (Telescope)](#fuzzy-finding-telescope)
+- [Fuzzy Finding (fzf-lua)](#fuzzy-finding-fzf-lua)
 - [LSP & Code Navigation](#lsp--code-navigation)
 - [Code Completion](#code-completion)
 - [Code Commenting](#code-commenting)
@@ -64,7 +64,7 @@ Smooth scrolling with animated transitions for a more polished editing experienc
 | `Shift + h` | Normal | `:bprevious<CR>` | Go to previous buffer |
 | `Shift + l` | Normal | `:bnext<CR>` | Go to next buffer |
 | `Space + x` | Normal | Close buffer | Close current buffer and switch to previous |
-| `Space + fb` | Normal | Telescope | Find and switch to open buffer |
+| `Space + fb` | Normal | fzf-lua | Find and switch to open buffer |
 
 **Buffer Line:**
 - Use `Shift + h/l` to navigate between buffers
@@ -133,7 +133,7 @@ Smooth scrolling with animated transitions for a more polished editing experienc
 
 ---
 
-## Fuzzy Finding (Telescope)
+## Fuzzy Finding (fzf-lua)
 
 ### File Finding
 
@@ -160,40 +160,24 @@ Smooth scrolling with animated transitions for a more polished editing experienc
 | `Space + fb` | Buffers | List and switch between open buffers |
 | `Space + fh` | Help Tags | Search Neovim help documentation |
 
-### Inside Telescope Prompt
-
-**Insert Mode:**
+### Inside fzf-lua Prompt
 
 | Key | Action | Description |
 |-----|--------|-------------|
 | `Ctrl + j/k` | Navigate | Move selection up/down |
-| `Ctrl + n/p` | History | Cycle through search history |
 | `Enter` | Select | Open selected file |
 | `Ctrl + x` | Horizontal Split | Open in horizontal split |
 | `Ctrl + v` | Vertical Split | Open in vertical split |
 | `Ctrl + t` | Tab | Open in new tab |
-| `Ctrl + u/d` | Scroll Preview | Scroll preview window |
-| `Ctrl + c` | Close | Close Telescope |
-| `Tab` | Toggle Selection | Select/deselect item and move down |
-| `Shift + Tab` | Toggle Selection | Select/deselect item and move up |
-| `Ctrl + q` | Send to Quickfix | Send results to quickfix list |
+| `Ctrl + d/u` | Scroll Preview | Scroll preview window down/up |
+| `Ctrl + c` / `Esc` | Close | Close fzf-lua |
+| `Ctrl + q` | Select All | Select all items and accept |
+| `Ctrl + d` (in buffers) | Delete Buffer | Close the selected buffer |
 
-**Normal Mode** (press `Esc` to enter):
-
-| Key | Action | Description |
-|-----|--------|-------------|
-| `j/k` | Navigate | Move selection up/down |
-| `gg` | Top | Jump to first result |
-| `G` | Bottom | Jump to last result |
-| `H/M/L` | Jump | Jump to top/middle/bottom of visible results |
-| `dd` (in buffers) | Delete Buffer | Close the selected buffer |
-
-**Live Grep Specific:**
-
-| Key | Action | Description |
-|-----|--------|-------------|
-| `Ctrl + k` | Quote | Quote the prompt for exact matching |
-| `Ctrl + i` | Glob Pattern | Add glob pattern for file filtering |
+**Features:**
+- Type to fuzzy search across results
+- Results update in real-time as you type
+- Preview window shows file contents with syntax highlighting
 
 ---
 
@@ -206,7 +190,7 @@ Smooth scrolling with animated transitions for a more polished editing experienc
 | `gd` | Go to Definition | Jump to symbol definition |
 | `gD` | Go to Declaration | Jump to symbol declaration |
 | `gi` | Go to Implementation | Jump to symbol implementation |
-| `gr` | Go to References | Show all references (grouped by file) |
+| `gr` | Go to References | Show all references in fzf picker |
 | `K` | Hover | Show documentation for symbol under cursor |
 | `Ctrl + k` | Signature Help | Show function signature help |
 
@@ -225,7 +209,7 @@ Smooth scrolling with animated transitions for a more polished editing experienc
 | `Space + d` | Line Diagnostics | Show diagnostics for current line |
 | `[d` | Previous Diagnostic | Jump to previous diagnostic |
 | `]d` | Next Diagnostic | Jump to next diagnostic |
-| `Space + fd` | All Diagnostics | List all diagnostics in Telescope |
+| `Space + fd` | All Diagnostics | List all diagnostics in fzf-lua |
 
 ### LSP Management
 
@@ -543,7 +527,7 @@ Treesitter provides smart, syntax-aware selection expansion.
 
 1. **Project-wide search**: `Space + fg` - Live grep across all files
 2. **Search current word**: Place cursor on word, press `Space + fc`
-3. **Filter by file type**: In live grep, press `Ctrl + i` and add pattern like `*.ts`
+3. **Fuzzy search**: Just start typing in fzf-lua to filter results in real-time
 
 ### LSP Features
 
@@ -555,8 +539,7 @@ Treesitter provides smart, syntax-aware selection expansion.
 
 1. **Quickfix workflow**:
    - Search with `Space + fg`
-   - Select multiple items with `Tab`
-   - Send to quickfix with `Ctrl + q`
+   - Select all items with `Ctrl + q`
    - Navigate with `:cnext` and `:cprev`
 
 ### Git Workflow
@@ -605,9 +588,8 @@ vim.keymap.set("n", "<leader>h", ":echo 'Hello!'<CR>", { desc = "Say hello" })
 ## Getting Help
 
 - **Which-key menu**: Press `Space` and wait - shows all available leader commands
-- **Inside Telescope**: Press `Ctrl + ?` or `?` (in normal mode)
 - **Inside Neo-tree**: Press `?`
 - **Inside LazyGit**: Press `?`
-- **Vim help**: `Space + fh` then search for topics
+- **Vim help**: `:help` followed by topic
 - **LSP info**: `:LspInfo` to see active language servers
 - **Check mappings**: `:map` to see all mappings, `:map <leader>` to see leader mappings

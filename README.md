@@ -59,13 +59,13 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
   - File operations (create, delete, rename, copy, move)
   - Smart toggling and focus management
 
-- **Fuzzy Finder** ([telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)):
-  - Fast file finding with `ripgrep`
-  - Advanced live grep with arguments support (`live_grep_args`)
-  - Quote prompting and glob patterns for advanced searches
+- **Fuzzy Finder** ([fzf-lua](https://github.com/ibhagwan/fzf-lua)):
+  - Fast file finding with `fd` and `ripgrep`
+  - Live grep with smart-case searching
   - Buffer, symbol, and diagnostic searching
   - Recent files and help tags
   - Hidden files included by default
+  - Customizable window layout and preview
 
 ### Git Integration
 
@@ -182,7 +182,8 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
 
 - Neovim >= 0.9.0
 - Git
-- [ripgrep](https://github.com/BurntSushi/ripgrep) - Required for Telescope file searching
+- [ripgrep](https://github.com/BurntSushi/ripgrep) - Required for fzf-lua live grep
+- [fd](https://github.com/sharkdp/fd) - Required for fzf-lua file searching
 - [lazygit](https://github.com/jesseduffield/lazygit) - Required for Git integration
 - [git-delta](https://github.com/dandavison/delta) - Required for syntax-highlighted diffs in LazyGit
 - A [Nerd Font](https://www.nerdfonts.com/) - Required for icon support
@@ -212,8 +213,8 @@ Full Language Server Protocol (LSP) integration with intelligent code completion
 
 5. Install required dependencies:
    ```bash
-   # Required for Telescope file searching
-   brew install ripgrep
+   # Required for fzf-lua searching
+   brew install ripgrep fd
 
    # Required for Git integration
    brew install lazygit
@@ -306,12 +307,13 @@ Or use traditional keybindings:
         ├── neo-tree.lua             # File explorer
         ├── neoscroll.lua            # Smooth scrolling
         ├── notify.lua               # Notification popups
-        ├── opencode.lua             # AI assistant
-        ├── supermaven.lua           # AI completion
-        ├── snacks.lua               # Utility functions
-        ├── telescope.lua            # Fuzzy finder
-        ├── treesitter.lua           # Syntax highlighting
-        └── whichkey.lua             # Keymap helper
+         ├── opencode.lua             # AI assistant
+         ├── supermaven.lua           # AI completion
+         ├── snacks.lua               # Utility functions
+         ├── fzf-lua.lua              # Fuzzy finder
+         ├── todo.lua                 # TODO comment highlighting
+         ├── treesitter.lua           # Syntax highlighting
+         └── whichkey.lua             # Keymap helper
 ```
 
 ## Customization

@@ -9,7 +9,7 @@ return {
           clear_suggestion = nil,
           accept_word = nil,
         },
-        ignore_filetypes = { "TelescopePrompt", "lazy" },
+        ignore_filetypes = { "fzf", "lazy" },
         color = {
           suggestion_color = "#808080",
           cterm = 244,
